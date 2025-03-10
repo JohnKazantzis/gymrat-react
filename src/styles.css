@@ -1,0 +1,18 @@
+.page-color {
+    background-color: #101828;
+}
+
+.core-size {
+    width: 100vw;
+    height: 100vh;
+}
+
+.header-size {
+    width: 60vw;
+}
+
+.tab-colors {
+    --bulma-text: white;
+    --bulma-link-text: #BA2C73;
+    --bulma-text-strong: #453A49;
+}

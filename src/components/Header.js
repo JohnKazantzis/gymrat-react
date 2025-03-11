@@ -13,7 +13,7 @@ export default function Header() {
 
 
     return(
-        <div className="is-flex is-flex-direction-row is-justify-content-space-between header-size">
+        <div className="is-flex is-flex-direction-row is-justify-content-space-between child-component-size">
             <figure className="image is-48x48">
                 <img src="/dumbbell-white.png" alt="KG" />
             </figure>
@@ -24,9 +24,11 @@ export default function Header() {
                     <li className={tabsClasses.admin ? "is-active" : ""} onClick={() => {setTabsClasses({stats: false, workouts: false, admin: true})}}><Link to="/admin">Admin Panel</Link></li>
                 </ul>
             </div>
-            <figure className="image is-48x48 is-clickable">
-                <img src="/account.png" alt="KG" />
-            </figure>
+            <Link to="/profile">
+                <figure className="image is-48x48 is-clickable" onClick={() => {setTabsClasses({stats: false, workouts: false, admin: false})}}>
+                    <img src="/account.png" alt="KG" />
+                </figure>
+            </Link>
         </div>
     );
 }

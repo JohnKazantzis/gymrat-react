@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Stats from "./components/Stats"
 import Workouts from "./components/Workouts"
 import AdminPanel from "./components/AdminPanel"
+import ProfilePanel from "./components/ProfilePanel"
 import "./styles.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
@@ -15,6 +16,7 @@ function App() {
                         <Route path="/" element={<Stats></Stats>}></Route>
                         <Route path="/workouts" element={<Workouts></Workouts>}></Route>
                         <Route path="/admin" element={<AdminPanel></AdminPanel>}></Route>
+                        <Route path="/profile" element={<ProfilePanel></ProfilePanel>}></Route>
                     </Routes>
                 </Router>
             </div>

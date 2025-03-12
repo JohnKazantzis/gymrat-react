@@ -11,6 +11,14 @@ export default function Header() {
         admin: false
     });
 
+    const updateClasses = (stats, workouts, admin) => {
+        setTabsClasses({
+            stats: stats,
+            workouts: workouts,
+            admin: admin
+        });
+    }
+
 
     return(
         <div className="is-flex is-flex-direction-row is-justify-content-space-between child-component-size">
@@ -19,13 +27,13 @@ export default function Header() {
             </figure>
             <div className="tabs is-medium tab-colors tab-colors">
                 <ul>
-                    <li className={tabsClasses.stats ? "is-active" : ""} onClick={() => {setTabsClasses({stats: true, workouts: false, admin: false})}}><Link to="/">Stats</Link></li>
-                    <li className={tabsClasses.workouts ? "is-active" : ""} onClick={() => {setTabsClasses({stats: false, workouts: true, admin: false})}}><Link to="/workouts">Workouts</Link></li>
-                    <li className={tabsClasses.admin ? "is-active" : ""} onClick={() => {setTabsClasses({stats: false, workouts: false, admin: true})}}><Link to="/admin">Admin Panel</Link></li>
+                    <li className={tabsClasses.stats ? "is-active" : ""} onClick={() => {updateClasses(true, false, false)}}><Link to="/">Stats</Link></li>
+                    <li className={tabsClasses.workouts ? "is-active" : ""} onClick={() => {updateClasses(false, true, false)}}><Link to="/workouts">Workouts</Link></li>
+                    <li className={tabsClasses.admin ? "is-active" : ""} onClick={() => {updateClasses(false, false, true)}}><Link to="/admin">Admin Panel</Link></li>
                 </ul>
             </div>
             <Link to="/profile">
-                <figure className="image is-48x48 is-clickable" onClick={() => {setTabsClasses({stats: false, workouts: false, admin: false})}}>
+                <figure className="image is-48x48 is-clickable" onClick={() => {updateClasses(false, false, false)}}>
                     <img src="/account.png" alt="KG" />
                 </figure>
             </Link>

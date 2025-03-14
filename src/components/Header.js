@@ -3,7 +3,7 @@ import "../styles.css";
 import "bulma/css/bulma.css";
 import { Link } from "react-router-dom";
 
-export default function Header() {
+export default function Header(props) {
 
     const [tabsClasses, setTabsClasses] = useState({
         stats: true,

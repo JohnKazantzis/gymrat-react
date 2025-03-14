@@ -13,6 +13,34 @@
 
 .tab-colors {
     --bulma-text: white;
-    --bulma-link-text: #BA2C73;
+    --bulma-link-text: #ff6685;
     --bulma-text-strong: #453A49;
+}
+
+.auth-child {
+    height: 100vh;
+    width: 50vw;
+}
+
+.auth-side {
+    height: 90vh;
+}
+
+.image-side {
+    background-color: black;
+}
+
+.auth-logo {
+    height: 10vh;
+    width: 20%;
+    --bulma-text-strong: #ff6685;
+}
+
+.auth-form {
+    height: 60%;
+    width: 45%;
+}
+
+.auth-btn {
+    width: 50%;
 }

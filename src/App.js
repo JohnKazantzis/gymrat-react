@@ -10,8 +10,19 @@ import AuthenticationPanel from "./components/AuthenticationPanel"
 import "./styles.css";
 
 function App() {
-
+    // TODO add use effect to have the isAuthenicated populated on refresh
+    // when the token is active
     const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const finaliseAuth = (token) => {
+        console.log("token: ", token);
+        sessionStorage.setItem("accessToken", token);
+        setIsAuthenticated(true);
+    }
+
+    const logout = () => {
+        sessionStorage.removeItem("accessToken");
+        setIsAuthenticated(false);
+    }
 
     return (
         <div className="is-flex is-flex-direction-row is-justify-content-center core-size page-color">
@@ -19,10 +30,13 @@ function App() {
                 <Router>
                     {isAuthenticated ? <Header isAuthenticated={isAuthenticated}></Header> : <></>}
                     <Routes>
-                        <Route path="/" element={isAuthenticated ? <Stats></Stats> : <AuthenticationPanel></AuthenticationPanel>}></Route>
+                        <Route 
+                            path="/" 
+                            element={isAuthenticated ? <Stats></Stats> : <AuthenticationPanel finaliseAuth={finaliseAuth}></AuthenticationPanel>}
+                        ></Route>
                         <Route path="/workouts" element={<Workouts></Workouts>}></Route>
                         <Route path="/admin" element={<AdminPanel></AdminPanel>}></Route>
-                        <Route path="/profile" element={<ProfilePanel></ProfilePanel>}></Route>
+                        <Route path="/profile" element={<ProfilePanel logout={logout}></ProfilePanel>}></Route>
                         <Route path="/signup" element={<SignUp></SignUp>}></Route>
                     </Routes>
                 </Router>

@@ -3,7 +3,7 @@ import "../styles.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
-export default function AuthenticationPanel() {
+export default function AuthenticationPanel(props) {
 
     let signUpBtnPressed = false;
     
@@ -17,7 +17,7 @@ export default function AuthenticationPanel() {
                     <h1 className="is-inline-block title is-5">Gymrat</h1>
                 </div>
                 <div className="auth-side is-flex is-justify-content-center is-align-items-center">
-                    {signUpBtnPressed ? <SignUp></SignUp> : <SignIn></SignIn>}
+                    {signUpBtnPressed ? <SignUp></SignUp> : <SignIn finaliseAuth={props.finaliseAuth}></SignIn>}
                 </div>
             </div>
             <div className="auth-child image-side">

@@ -1,7 +1,13 @@
 import React, { useState, useEffect} from "react";
-import { getUser, updateUser } from '../services/userService'
+import { getUser, updateUser } from '../services/userService';
+import { useNavigate } from "react-router-dom";
 
-export default function ProfilePanel() {
+export default function ProfilePanel(props) {
+    // TODO fix form width, its too big
+
+    // Init navigate hook
+    const navigate = useNavigate();
+
     // State definition and data initial loading
     let id = 3;
     const [user, setUser] = useState({
@@ -36,6 +42,11 @@ export default function ProfilePanel() {
         });
     }
 
+    const handleNavigate = () => {
+        props.logout();
+        navigate("/");
+    }
+
     return(
         <div className="box child-component-size mt-5" onSubmit={() => handleUserUpdate(user)}>
             <div className="field">
@@ -52,6 +63,7 @@ export default function ProfilePanel() {
                 </div>
             </div>
             <button className="button is-primary" onClick={() => handleUserUpdate(user)}>Update</button>
+            <button className="button is-danger" onClick={handleNavigate}>Logout</button>
         </div>
     );
 }

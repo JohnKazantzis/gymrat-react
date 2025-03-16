@@ -21,7 +21,6 @@ export default function AuthenticationPanel(props) {
                 </div>
             </div>
             <div className="auth-child image-side">
-                
             </div>
             
         </div>

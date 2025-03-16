@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import "../styles.css";
 import "bulma/css/bulma.css";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { STATS_PATH, WORKOUTS_PATH, ADMIN_PATH } from "../constants";
 
 export default function Header() {
-
+    const { pathname } = useLocation();
+    
+    console.log(pathname);
+    
     const [tabsClasses, setTabsClasses] = useState({
-        stats: true,
-        workouts: false,
-        admin: false
+        stats: pathname == STATS_PATH,
+        workouts: pathname == WORKOUTS_PATH,
+        admin: pathname == ADMIN_PATH
     });
 
     const updateClasses = (stats, workouts, admin) => {

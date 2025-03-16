@@ -8,7 +8,16 @@
 }
 
 .child-component-size {
-    width: 60vw;
+    width: 50vw;
+}
+
+.profile-panel-size {
+    width: 30vw;
+    margin: auto;
+}
+
+.profile-btn {
+    width: 50%;
 }
 
 .tab-colors {

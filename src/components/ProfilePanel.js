@@ -9,14 +9,14 @@ export default function ProfilePanel(props) {
     const navigate = useNavigate();
 
     // State definition and data initial loading
-    let id = 3;
+    const id = JSON.parse(sessionStorage.getItem("userData"))?.id;
     const [user, setUser] = useState({
         id: id,
-        name: "",
+        username: "",
         email: ""
     });
     useEffect(() => {
-        getUser(id)
+        getUser(user.id)
         .then(result => {
             setUser(result?.data);
         })
@@ -48,11 +48,11 @@ export default function ProfilePanel(props) {
     }
 
     return(
-        <div className="box child-component-size mt-5" onSubmit={() => handleUserUpdate(user)}>
+        <div className="box profile-panel-size mt-5" onSubmit={() => handleUserUpdate(user)}>
             <div className="field">
-                <label className="label">Name</label>
+                <label className="label">Username</label>
                 <div className="control">
-                <input className="input" name="name" value={user.name} type="text" onChange={handleInputChange}/>
+                <input className="input" name="username" value={user.username} type="text" onChange={handleInputChange}/>
                 </div>
             </div>
 
@@ -62,8 +62,10 @@ export default function ProfilePanel(props) {
                 <input className="input" name="email" value={user.email} type="text" onChange={handleInputChange}/>
                 </div>
             </div>
-            <button className="button is-primary" onClick={() => handleUserUpdate(user)}>Update</button>
-            <button className="button is-danger" onClick={handleNavigate}>Logout</button>
+            <div className="is-flex is-justify-content-center">
+                <button className="button is-primary mr-1 profile-btn" onClick={() => handleUserUpdate(user)}>Update</button>
+                <button className="button is-danger ml-1 profile-btn" onClick={handleNavigate}>Logout</button>                
+            </div>
         </div>
     );
 }

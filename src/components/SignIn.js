@@ -26,7 +26,14 @@ export default function SignIn(props) {
             setIsLoading(true);
             const result = await signIn(credentials);
             console.log(result);
-            props.finaliseAuth(result?.data?.accessToken);
+            props.finaliseAuth(
+                result?.data?.accessToken, 
+                {
+                    id: result?.data?.id,
+                    username: result?.data?.username,
+                    email: result?.data?.email
+                }
+            );
             
         } catch(error) {
             console.log(error);

@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import "../styles.css";
-import "bulma/css/bulma.css";
 import { Link, useLocation } from "react-router-dom";
 import { STATS_PATH, WORKOUTS_PATH, ADMIN_PATH } from "../constants";
 
 export default function Header() {
     const { pathname } = useLocation();
-    
-    console.log(pathname);
     
     const [tabsClasses, setTabsClasses] = useState({
         stats: pathname == STATS_PATH,

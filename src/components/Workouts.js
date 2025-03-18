@@ -1,9 +1,12 @@
 import React from "react";
+import Pagination from "./Pagination"
 
 export default function Workouts() {
 
     return(
-        <div>Workouts</div>
+        <div>
+            <Pagination></Pagination>
+        </div>
     );
 
 }

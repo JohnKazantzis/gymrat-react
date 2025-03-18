@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { signIn } from "../services/authService"
+import { signIn } from "../services/authService";
+import { BAD_CREDENTIALS_CODE, SIGN_IN_BTN_STYLE } from "../constants";
 
 export default function SignIn(props) {
-    const BAD_CREDENTIALS_CODE = 400;
-    const SIGN_IN_BTN_STYLE = {
-        loading: "button is-primary mr-1 auth-btn is-loading",
-        notLoading: "button is-primary mr-1 auth-btn",
-    }
+    
 
     const [isloading, setIsLoading] = useState(false)
     const [credentials, setCredentials] = useState({
@@ -81,7 +78,11 @@ export default function SignIn(props) {
                     onClick={() => authenticateUser(credentials)}
                     >Sign in
                 </button>
-                <button className="button is-danger ml-1 auth-btn" disabled={isloading}>Sign up</button>
+                <button 
+                    className="button is-danger ml-1 auth-btn" 
+                    disabled={isloading}
+                    onClick={props.toogleSignUp}
+                >Sign up</button>
             </div>
         </div>
     );

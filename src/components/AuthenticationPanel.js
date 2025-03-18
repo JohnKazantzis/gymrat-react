@@ -1,11 +1,14 @@
-import React from "react"
+import React, { useState } from "react"
 import "../styles.css";
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 
 export default function AuthenticationPanel(props) {
+    const [showSignUp, setShowSignUp] = useState(false);
 
-    let signUpBtnPressed = false;
+    const toogleSignUp = () => {
+        setShowSignUp(!showSignUp);
+    }
     
     return(
         <div className="auth-wrapper core-size is-flex">
@@ -17,7 +20,9 @@ export default function AuthenticationPanel(props) {
                     <h1 className="is-inline-block title is-5">Gymrat</h1>
                 </div>
                 <div className="auth-side is-flex is-justify-content-center is-align-items-center">
-                    {signUpBtnPressed ? <SignUp></SignUp> : <SignIn finaliseAuth={props.finaliseAuth}></SignIn>}
+                    {showSignUp ? 
+                    <SignUp finaliseAuth={props.finaliseAuth} toogleSignUp={toogleSignUp}></SignUp> : 
+                    <SignIn finaliseAuth={props.finaliseAuth} toogleSignUp={toogleSignUp}></SignIn>}
                 </div>
             </div>
             <div className="auth-child image-side">

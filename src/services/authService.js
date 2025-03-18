@@ -5,5 +5,6 @@ const api = axios.create({
 });
 
 const signIn = (credentials) => api.post("/signin", credentials);
+const signUp = (credentials) => api.post("/signup", credentials)
 
-export { signIn }
+export { signIn, signUp }

@@ -3,19 +3,26 @@ import { SIGN_IN_BTN_STYLE } from "../constants";
 import { signUp } from "../services/authService";
 
 export default function SignUp(props) {
-    const [username, setUsername] = useState(null);
-    const [password, setPassword] = useState(null);
-    const [email, setEmail] = useState(null);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [isLoading, setIsLoading] = useState(false);
 
-    const createUser = async (username, email, password) => {
-        setIsLoading(true);
-        await signUp({username, email, password});
-        
+    const createUser = async (event, username, email, password) => {
+        try {
+            event.preventDefault();
+            setIsLoading(true);
+            await signUp({username, email, password});
+            props.toogleSignUp();
+        } catch(error) {
+            console.log(error);            
+        } finally {
+            setIsLoading(false);
+        }
     }
 
     return(
-        <div className="box auth-form">
+        <form className="box auth-form-sign-up" onSubmit={(event) => createUser(event, username, email, password)}>
             <div className="title is-2 has-text-centered">Sign up...</div>
             <div className="field">
                 <label className="label">Username</label>
@@ -59,7 +66,6 @@ export default function SignUp(props) {
             <div className="is-flex is-justify-content-center">
                 <button 
                     className={isLoading ? SIGN_IN_BTN_STYLE.loading : SIGN_IN_BTN_STYLE.notLoading} 
-                    onClick={() => createUser(username, email, password)}
                     >Confirm
                 </button>
                 <button 
@@ -68,7 +74,7 @@ export default function SignUp(props) {
                     onClick={props.toogleSignUp}
                 >Sign in</button>
             </div>
-        </div>
+        </form>
     );
 
 }

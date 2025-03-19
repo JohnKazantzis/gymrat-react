@@ -3,13 +3,11 @@ import { signIn } from "../services/authService";
 import { BAD_CREDENTIALS_CODE, SIGN_IN_BTN_STYLE } from "../constants";
 
 export default function SignIn(props) {
-    
-
-    const [isloading, setIsLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
     const [credentials, setCredentials] = useState({
         username: "",
         password: ""
-    })
+    });
 
     const updateInput = (event) => {
         setCredentials({
@@ -18,8 +16,9 @@ export default function SignIn(props) {
         });
     }
 
-    const authenticateUser = async (credentials) => {
+    const authenticateUser = async (event, credentials) => {
         try {
+            event.preventDefault();
             setIsLoading(true);
             const result = await signIn(credentials);
             console.log(result);
@@ -44,7 +43,7 @@ export default function SignIn(props) {
     }
 
     return(
-        <div className="box auth-form">
+        <form className="box auth-form-sign-in" onSubmit={(event) => authenticateUser(event, credentials)}>
             <div className="title is-2 has-text-centered">Sign in...</div>
             <div className="field">
                 <label className="label">Username</label>
@@ -74,17 +73,17 @@ export default function SignIn(props) {
             </div>
             <div className="is-flex is-justify-content-center">
                 <button 
-                    className={isloading ? SIGN_IN_BTN_STYLE.loading : SIGN_IN_BTN_STYLE.notLoading} 
-                    onClick={() => authenticateUser(credentials)}
+                    className={isLoading ? SIGN_IN_BTN_STYLE.loading : SIGN_IN_BTN_STYLE.notLoading} 
+                    type="submit"
                     >Sign in
                 </button>
                 <button 
                     className="button is-danger ml-1 auth-btn" 
-                    disabled={isloading}
+                    disabled={isLoading}
                     onClick={props.toogleSignUp}
                 >Sign up</button>
             </div>
-        </div>
+        </form>
     );
 
 }

@@ -47,8 +47,13 @@
     --bulma-text-strong: #ff6685;
 }
 
-.auth-form {
+.auth-form-sign-in {
     height: 50%;
+    width: 45%;
+}
+
+.auth-form-sign-up {
+    height: 55%;
     width: 45%;
 }
 

@@ -21,7 +21,7 @@ export default function SignIn(props) {
             event.preventDefault();
             setIsLoading(true);
             const result = await signIn(credentials);
-            console.log(result);
+            console.log("Sign in", result);
             props.finaliseAuth(
                 result?.data?.accessToken, 
                 {

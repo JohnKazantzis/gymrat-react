@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const accessToken = sessionStorage.getItem("accessToken");
+const accessToken = localStorage.getItem("accessToken");
 const api = axios.create({
     baseURL: "http://localhost:8080/api/workouts",
     headers: { 

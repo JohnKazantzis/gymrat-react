@@ -3,24 +3,28 @@ import { getUser, updateUser } from '../services/userService';
 import { useNavigate } from "react-router-dom";
 
 export default function ProfilePanel(props) {
-    // TODO fix form width, its too big
-
     // Init navigate hook
     const navigate = useNavigate();
 
     // State definition and data initial loading
-    const id = JSON.parse(sessionStorage.getItem("userData"))?.id;
+    const id = JSON.parse(localStorage.getItem("userData"))?.id;
     const [user, setUser] = useState({
         id: id,
         username: "",
         email: ""
     });
-    useEffect(() => {
-        getUser(user.id)
-        .then(result => {
+
+    const getUserData = async (userId) => {
+        try {
+            const result = await getUser(userId);
             setUser(result?.data);
-        })
-        .catch(error => console.log(error));
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    useEffect(() => {
+        getUserData(user.id);
     }, []);
 
     // Dynamic input value change handler

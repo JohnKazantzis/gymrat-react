@@ -16,24 +16,24 @@ function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [userData, setUserData] = useState({});
     useEffect(() => {
-        let accessToken = sessionStorage.getItem("accessToken");
+        let accessToken = localStorage.getItem("accessToken");
         if(accessToken && jwtDecode(accessToken)?.exp > (Date.now() / 1000)) {
             setIsAuthenticated(true);
-            setUserData(JSON.parse(sessionStorage.getItem("userData")));
+            setUserData(JSON.parse(localStorage.getItem("userData")));
         }
     },[]);
 
     const finaliseAuth = (token, tempUserData) => {
         console.log("token: ", token);
-        sessionStorage.setItem("accessToken", token);
-        sessionStorage.setItem("userData", JSON.stringify(tempUserData));
+        localStorage.setItem("accessToken", token);
+        localStorage.setItem("userData", JSON.stringify(tempUserData));
         setIsAuthenticated(true);
         setUserData(tempUserData);
     }
 
     const logout = () => {
-        sessionStorage.removeItem("accessToken");
-        sessionStorage.removeItem("userData");
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("userData");
         setIsAuthenticated(false);
         setUserData({});
     }

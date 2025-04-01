@@ -2,10 +2,11 @@ import axios from "axios";
 
 // Create API
 const accessToken = sessionStorage.getItem("accessToken");
+console.log("service accessToken: " + accessToken);
 const api = axios.create({
     baseURL: "http://localhost:8080/api/users",
     headers: {
-        "Authorization": `Bearer ${accessToken}` ?? null
+        "Authorization": accessToken ? `Bearer ${accessToken}` : null
     }
 });
 

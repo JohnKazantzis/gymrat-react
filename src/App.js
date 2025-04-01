@@ -8,7 +8,7 @@ import AdminPanel from "./components/AdminPanel"
 import ProfilePanel from "./components/ProfilePanel"
 import SignUp from "./components/SignUp"
 import AuthenticationPanel from "./components/AuthenticationPanel"
-import "./styles.css";
+import "./scss/styles.scss";
 
 // TODO Dont let the user navigate to other app urls when he is not logged in
 

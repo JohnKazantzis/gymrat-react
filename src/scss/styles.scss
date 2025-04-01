@@ -1,0 +1,59 @@
+@use "variables" as var;
+@use "mixins" as mix;
+
+
+.page-color {
+    background-color: var.$primary-color;
+}
+
+.core-size {
+    @include mix.width-height-sizing(100vw, 100vh);
+}
+
+.child-component-size {
+    width: 50vw;
+}
+
+.profile-panel-size {
+    width: 30vw;
+    margin: auto;
+}
+
+.profile-btn {
+    width: 50%;
+}
+
+.auth-child {
+    @include mix.width-height-sizing(50vw, 100vh);
+}
+
+.auth-side {
+    height: 90vh;
+}
+
+.image-side {
+    background-color: black;
+}
+
+.auth-logo {
+    @include mix.width-height-sizing(20%, 10vh);
+}
+
+$title-color: #101828;
+.auth-form-sign-in {
+    @include mix.width-height-sizing(45%, 50%);
+}
+
+.auth-form-sign-up {
+    @include mix.width-height-sizing(45%, 55%);
+}
+
+.auth-btn {
+    width: 50%;
+}
+
+.workout-box {
+    height: 2.5rem;
+    border-radius: 5px;
+    background-color: white;
+}

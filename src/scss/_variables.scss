@@ -1,0 +1,12 @@
+$primary-color: #101828;
+$secondary-color: #ff6685;
+$tab-deactivated-hover: #453A49;
+
+@forward "bulma/sass" with (
+    $tabs-link-active-color: $secondary-color,
+    $tabs-link-active-border-bottom-color: $secondary-color,
+    $tabs-link-color: white,
+    $tabs-link-hover-border-bottom-color: $tab-deactivated-hover,
+    $tabs-link-hover-color: $tab-deactivated-hover,
+    $title-color: $secondary-color
+);

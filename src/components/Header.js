@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import "../styles.css";
 import { Link, useLocation } from "react-router-dom";
 import { STATS_PATH, WORKOUTS_PATH, ADMIN_PATH } from "../constants";
 
@@ -7,9 +6,9 @@ export default function Header() {
     const { pathname } = useLocation();
     
     const [tabsClasses, setTabsClasses] = useState({
-        stats: pathname == STATS_PATH,
-        workouts: pathname == WORKOUTS_PATH,
-        admin: pathname == ADMIN_PATH
+        stats: pathname === STATS_PATH,
+        workouts: pathname === WORKOUTS_PATH,
+        admin: pathname === ADMIN_PATH
     });
 
     const updateClasses = (stats, workouts, admin) => {

@@ -39,7 +39,6 @@
     @include mix.width-height-sizing(20%, 10vh);
 }
 
-$title-color: #101828;
 .auth-form-sign-in {
     @include mix.width-height-sizing(45%, 50%);
 }
@@ -52,8 +51,19 @@ $title-color: #101828;
     width: 50%;
 }
 
-.workout-box {
-    height: 2.5rem;
-    border-radius: 5px;
-    background-color: white;
+.workouts-inner {
+
+    .workout-box {
+        height: 2.5rem;
+        border-radius: 5px;
+        background-color: #fcf5f6;
+        margin-bottom: 0.5rem;
+        padding: 0 1rem 0 1rem;
+        font-weight: 550;
+    
+        &:hover {
+            background-color: var.$secondary-color;
+            cursor: pointer;
+        }
+    }
 }

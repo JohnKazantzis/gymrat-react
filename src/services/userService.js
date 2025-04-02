@@ -1,14 +1,21 @@
 import axios from "axios";
 
 // Create API
-const accessToken = localStorage.getItem("accessToken");
-console.log("service accessToken: " + accessToken);
 const api = axios.create({
-    baseURL: "http://localhost:8080/api/users",
-    headers: {
-        "Authorization": accessToken ? `Bearer ${accessToken}` : null
-    }
+    baseURL: "http://localhost:8080/api/users"
 });
+
+// Add a request interceptor
+api.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+);
 
 const getAllUsers = () => api.get();
 const getUser = (id) => api.get(`/${id}`);

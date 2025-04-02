@@ -1,12 +1,20 @@
 import axios from "axios";
 
-const accessToken = localStorage.getItem("accessToken");
 const api = axios.create({
-    baseURL: "http://localhost:8080/api/workouts",
-    headers: { 
-        "Authorization": accessToken ? `Bearer ${accessToken}` : null 
-    }
+    baseURL: "http://localhost:8080/api/workouts"
 });
+
+// Add a request interceptor
+api.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => Promise.reject(error)
+);
 
 const getAllWorkoutsByUserId = (page, size, userId, accessToken) => api.get("", {
     params: { 

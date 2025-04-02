@@ -27,14 +27,14 @@ export default function Workouts() {
 
     return(
         <div>
-            <h1>Recent Workouts</h1>
-            <div>
+            
+            <div className="workouts-inner">
                 {
                     recentWorkouts.content &&
                     recentWorkouts.content.map(item => {
                         return (
-                            <div key={item.id} className="workout-box">
-                                {item.workoutDate}
+                            <div key={item.id} className="is-flex is-align-items-center workout-box">
+                                Date: {(new Date(item.workoutDate)).toLocaleDateString()}
                             </div>
                         );
                     })

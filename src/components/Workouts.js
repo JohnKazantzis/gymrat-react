@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { getAllWorkoutsByUserId } from "../services/workoutService";
 import Pagination from "./Pagination";
+import WorkoutExercises from "./WorkoutExercises";
 import { PAGE_SIZE } from "../constants";
 
 export default function Workouts() {
     const [recentWorkouts, setRecentWorkouts] = useState([]);
+    const [enabledWorkout, setEnabledWorkout] = useState(null)
     
     // TODO: Add user id dynamically
     useEffect(() => {
@@ -33,8 +35,11 @@ export default function Workouts() {
                     recentWorkouts.content &&
                     recentWorkouts.content.map(item => {
                         return (
-                            <div key={item.id} className="is-flex is-align-items-center workout-box">
-                                Date: {(new Date(item.workoutDate)).toLocaleDateString()}
+                            <div key={item.id}>
+                                <div  onClick={() => setEnabledWorkout(item.id === enabledWorkout ? null : item.id)} className="is-flex is-align-items-center workout-box">
+                                    Date: {(new Date(item.workoutDate)).toLocaleDateString()}
+                                </div>
+                                { item.id === enabledWorkout ? <WorkoutExercises itemId={item.id}></WorkoutExercises> : <></> }
                             </div>
                         );
                     })

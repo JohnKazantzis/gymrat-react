@@ -1,7 +1,7 @@
 // Header
 export const STATS_PATH = "/"
 export const WORKOUTS_PATH = "/workouts"
-export const ADMIN_PATH = "/admin"
+export const ADD_WORKOUT_PATH = "/addworkout"
 
 // SignIn
 export const BAD_CREDENTIALS_CODE = 400;

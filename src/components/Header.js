@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { STATS_PATH, WORKOUTS_PATH, ADMIN_PATH } from "../constants";
+import { STATS_PATH, WORKOUTS_PATH, ADD_WORKOUT_PATH } from "../constants";
 
 export default function Header() {
     const { pathname } = useLocation();
@@ -8,14 +8,14 @@ export default function Header() {
     const [tabsClasses, setTabsClasses] = useState({
         stats: pathname === STATS_PATH,
         workouts: pathname === WORKOUTS_PATH,
-        admin: pathname === ADMIN_PATH
+        addWorkout: pathname === ADD_WORKOUT_PATH
     });
 
-    const updateClasses = (stats, workouts, admin) => {
+    const updateClasses = (stats, workouts, addWorkout) => {
         setTabsClasses({
             stats: stats,
             workouts: workouts,
-            admin: admin
+            addWorkout: addWorkout
         });
     }
 
@@ -29,7 +29,7 @@ export default function Header() {
                 <ul>
                     <li className={tabsClasses.stats ? "is-active" : ""} onClick={() => {updateClasses(true, false, false)}}><Link to="/">Stats</Link></li>
                     <li className={tabsClasses.workouts ? "is-active" : ""} onClick={() => {updateClasses(false, true, false)}}><Link to="/workouts">Workouts</Link></li>
-                    <li className={tabsClasses.admin ? "is-active" : ""} onClick={() => {updateClasses(false, false, true)}}><Link to="/admin">Admin Panel</Link></li>
+                    <li className={tabsClasses.addWorkout ? "is-active" : ""} onClick={() => {updateClasses(false, false, true)}}><Link to="/addworkout">Add Workout</Link></li>
                 </ul>
             </div>
             <Link to="/profile">

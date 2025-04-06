@@ -2,12 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import Header from "./components/Header";
-import Stats from "./components/Stats"
-import Workouts from "./components/Workouts"
-import AdminPanel from "./components/AdminPanel"
-import ProfilePanel from "./components/ProfilePanel"
-import SignUp from "./components/SignUp"
-import AuthenticationPanel from "./components/AuthenticationPanel"
+import Stats from "./components/Stats";
+import Workouts from "./components/Workouts";
+import AddWorkout from "./components/AddWorkout";
+import ProfilePanel from "./components/ProfilePanel";
+import SignUp from "./components/SignUp";
+import AuthenticationPanel from "./components/AuthenticationPanel";
 import "./scss/styles.scss";
 
 // TODO Dont let the user navigate to other app urls when he is not logged in
@@ -48,9 +48,9 @@ function App() {
                             path="/" 
                             element={isAuthenticated ? <Stats></Stats> : <AuthenticationPanel finaliseAuth={finaliseAuth}></AuthenticationPanel>}
                         ></Route>
-                        <Route path="/workouts" element={<Workouts></Workouts>}></Route>
-                        <Route path="/admin" element={<AdminPanel></AdminPanel>}></Route>
-                        <Route path="/profile" element={<ProfilePanel logout={logout} id={userData?.id}></ProfilePanel>}></Route>
+                        <Route path="/workouts" element={<Workouts userId={userData.id}></Workouts>}></Route>
+                        <Route path="/addworkout" element={<AddWorkout></AddWorkout>}></Route>
+                        <Route path="/profile" element={<ProfilePanel logout={logout} id={userData.id}></ProfilePanel>}></Route>
                         <Route path="/signup" element={<SignUp></SignUp>}></Route>
                     </Routes>
                 </Router>

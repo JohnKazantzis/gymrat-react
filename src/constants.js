@@ -13,3 +13,9 @@ export const SIGN_IN_BTN_STYLE = {
 // Pagination
 export const PAGE_SIZE = 10;
 export const NUM_OF_ADJACENT_PAGES = 2;
+
+// Add Workout
+export const ADD_WORKOUT_BTN_STYLE = {
+    loading: "button is-primary is-loading",
+    notLoading: "button is-primary",
+}

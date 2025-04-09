@@ -54,7 +54,7 @@ export default function SignIn(props) {
                         onChange={(event) => updateInput(event)} 
                         className="input" 
                         type="text" 
-                        placeholder="e.g. alexp" 
+                        placeholder="alexp" 
                     />
                 </div>
             </div>
@@ -81,7 +81,8 @@ export default function SignIn(props) {
                     className="button is-danger ml-1 auth-btn" 
                     disabled={isLoading}
                     onClick={props.toogleSignUp}
-                >Sign up</button>
+                    >Sign up
+                </button>
             </div>
         </form>
     );

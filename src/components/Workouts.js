@@ -8,6 +8,7 @@ export default function Workouts({ userId }) {
     const [recentWorkouts, setRecentWorkouts] = useState([]);
     const [enabledWorkout, setEnabledWorkout] = useState(null)
     
+    // TODO Check back when the userId is null when refeshing this page
     useEffect(() => {
         getRecentWorkouts(0, PAGE_SIZE, userId);
     }, []);
